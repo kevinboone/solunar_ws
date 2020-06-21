@@ -86,13 +86,13 @@ SolunarYearSummary *solunar_year_summary_create
     festival_get_vernal_equinox (year));
 
   klist_append (self->list, 
-    festival_get_summer_solstice (year, FALSE));
+    festival_get_summer_solstice (year, latitude <= 0));
 
   klist_append (self->list, 
     festival_get_autumnal_equinox (year));
 
   klist_append (self->list, 
-    festival_get_winter_solstice (year, FALSE));
+    festival_get_winter_solstice (year, latitude <= 0));
   // TODO sort
 
   KLOG_OUT
