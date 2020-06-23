@@ -122,7 +122,13 @@ int main (int argc, char **argv)
   {
   ProgramContext *context = program_context_new();
 
-  klog_set_log_level (KLOG_INFO);
+  // Set the initial log level from an env var, for OpenShift/Kubernetes
+  //  compatibility
+  char *ll_env = getenv ("SOLUNAR_WS_LOG_LEVEL");
+  if (ll_env)
+    klog_set_log_level (atoi(ll_env));
+  else
+    klog_set_log_level (KLOG_INFO);
  
   program_context_read_rc_files (context);
   if (program_context_parse_command_line (context, argc, argv))

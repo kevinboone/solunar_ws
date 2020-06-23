@@ -1,5 +1,5 @@
 NAME      := solunar_ws
-VERSION   := 0.1a
+VERSION   := 0.1b
 LIBS      := -lmicrohttpd -lm ${EXTRA_LIBS} 
 KLIB      := klib
 KLIB_INC  := $(KLIB)/include

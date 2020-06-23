@@ -1,0 +1,60 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: solunar-ws
+spec:
+  replicas: 1
+  strategy:
+    type: Rolling
+  selector:
+    name: solunar-ws
+  template:
+    metadata:
+      name: solunar-ws
+      labels:
+        name: solunar-ws
+    spec:
+      containers:
+        - env: 
+          - name: FOO
+            value: bar
+          name: solunar-ws
+          image: quay.io/kboone/solunar_ws:0.1b
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 8080 
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 8080 
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 512Mi
+          securityContext:
+            privileged: false
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: solunar-ws
+spec:
+  ports:
+    - name: solunar-ws
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name: solunar-ws
