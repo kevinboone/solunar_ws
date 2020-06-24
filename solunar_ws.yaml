@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - env: 
-          - name: FOO
-            value: bar
+          - name: SOLUNAR_WS_LOG_LEVEL
+            value: "1"
           name: solunar-ws
-          image: quay.io/kboone/solunar_ws:0.1b
+          image: quay.io/kboone/solunar_ws:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
