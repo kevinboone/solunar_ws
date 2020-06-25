@@ -137,8 +137,6 @@ int main (int argc, char **argv)
       program_context_get_integer (context, "log-level", KLOG_INFO);
     klog_set_log_level (log_level);
 
-    printf ("OK\n");
-
     char *host = program_context_get (context, "host");
     if (!host) host = strdup ("0.0.0.0");
     int port = program_context_get_integer (context, "port", 
