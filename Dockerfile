@@ -19,16 +19,12 @@ CMD ["/bin/sh"]
 
 FROM alpine:3.12
 
-RUN addgroup -g 1000 mygroup && \
-    mkdir /myuser && \
-    adduser -G mygroup -u 1000 -h /myuser -D myuser && \
-    chown -R myuser:mygroup /myuser && \
-    apk add tzdata 
+RUN apk add tzdata 
 
 COPY --from=0 /solunar_ws/solunar_ws /
 COPY --from=0 /usr/local/lib/libmicrohttpd.so.12 /usr/local/lib
 
-USER myuser
+USER 1000 
 
 CMD ["/solunar_ws"]
 
