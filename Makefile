@@ -14,7 +14,7 @@ DEPS	  := $(OBJECTS:.o=.deps)
 DESTDIR   := /
 PREFIX    := /usr
 BINDIR    := $(DESTDIR)/$(PREFIX)/bin
-CFLAGS    := -O3 -fpie -fpic -Wall -Werror -DNAME=\"$(NAME)\" -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I $(LIBSOL_INC) -I $(KLIB_INC) ${EXTRA_CFLAGS} -ffunction-sections -fdata-sections
+CFLAGS    := -O3 -fpie -fpic -Wall -DNAME=\"$(NAME)\" -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I $(LIBSOL_INC) -I $(KLIB_INC) ${EXTRA_CFLAGS} -ffunction-sections -fdata-sections
 
 LDFLAGS := -s -pie -Wl,--gc-sections ${EXTRA_LDFLAGS}
 
