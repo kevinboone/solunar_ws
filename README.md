@@ -14,8 +14,8 @@ city on a specified day. It is invoked using a URL of this form:
 
     http://host:8080/day/[city]/[date]
 
-and produces its results in JSON format. `city` is a city name of the form
-"Europe/London" which can be abbreviated (provided there is only one match).
+and produces its results in JSON format. `city` is a city name like "London",
+"Minsk", or "Adelaide".
 The full list of cities is derived from a Linux timezone database, and is in
 the file `libsolunar/src/cityinfo.h`. The date is in the form 'month day
 [year]', e.g., 'jun 22 2020'. The spaces, of course, will need to be escaped
