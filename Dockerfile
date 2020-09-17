@@ -22,7 +22,7 @@ FROM alpine:3.12
 RUN apk add tzdata 
 
 COPY --from=0 /solunar_ws/solunar_ws /
-COPY --from=0 /usr/local/lib/libmicrohttpd.so.12 /usr/local/lib
+COPY --from=0 /usr/local/lib/libmicrohttpd.so.* /usr/local/lib
 
 USER 1000 
 
